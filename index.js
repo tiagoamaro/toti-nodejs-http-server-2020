@@ -2,8 +2,16 @@ const http = require('http')
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
-    res.writeHead(200)
-    res.end('<html><body><h1>Respondendo uma requisicao GET!</h1></body></html>')
+    if (req.url === '/fotos') {
+      res.writeHead(200)
+      res.end('<html><body><h1>Cheguei na rota de fotos</h1></body></html>')
+    } else if (req.url === '/cachorros') {
+      res.writeHead(200)
+      res.end('<html><body><h1>Cheguei na rota dos cachorros!</h1></body></html>')
+    } else {
+      res.writeHead(404)
+      res.end('<html><body><h1>Nao encontrei uma rota!</h1></body></html>')
+    }
   } else if (req.method === 'POST') {
     res.writeHead(200)
     res.end('Respondendo requisicao POST!')
