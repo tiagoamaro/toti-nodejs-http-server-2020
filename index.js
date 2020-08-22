@@ -1,10 +1,17 @@
 const express = require('express')
 const app = express()
+const { Sequelize, DataTypes } = require('sequelize');
+const User = require('./models/user')
+
+const sequelize = new Sequelize('postgres://postgres:example@db:5432/toti')
+const users = User(sequelize, DataTypes)
 
 app.set('view engine', 'ejs')
 
-app.get('/fotos', (req, res) => {
-  res.render('fotos', { nome: req.query.nome })
+app.get('/fotos', async (req, res) => {
+  const user = await users.findByPk(2)
+
+  res.render('fotos', { nome: user.name, descricao: user.description })
 })
 
 app.get('/cachorros', (req, res) => {
@@ -19,6 +26,6 @@ app.post('/cachorros', (req, res) => {
   res.send('Adotando um novo cachorro')
 })
 
-app.listen(8080, () => {
+app.listen(3000, () => {
   console.log('Iniciando o servidor express')
 })
