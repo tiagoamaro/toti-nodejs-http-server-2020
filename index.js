@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 
+app.set('view engine', 'ejs')
+
 app.get('/fotos', (req, res) => {
-  res.send('<html><body><h1>Cheguei na rota de fotos, oba!</h1></body></html>')
+  res.render('fotos', { nome: req.query.nome })
 })
 
 app.get('/cachorros', (req, res) => {
