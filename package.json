@@ -1,0 +1,26 @@
+{
+  "name": "toti-nodejs-http-server-2020",
+  "version": "1.0.0",
+  "description": "Exemplo de servidor HTTP com NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagoamaro/toti-nodejs-http-server-2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiagoamaro/toti-nodejs-http-server-2020/issues"
+  },
+  "homepage": "https://github.com/tiagoamaro/toti-nodejs-http-server-2020#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
