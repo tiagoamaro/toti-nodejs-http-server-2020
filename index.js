@@ -14,6 +14,15 @@ const tasks = TaskModel(sequelize, DataTypes)
 
 app.set('view engine', 'ejs')
 
+app.get('/tarefas', async (req, res) => {
+  const allTasks = await tasks.findAll()
+
+  // Podemos também executar SQL puro, se quisermos
+  // const allTasks = await sequelize.query('SELECT * FROM Tasks')  
+
+  res.json({ allTasks })
+})
+
 app.get('/tarefas/:id', async (req, res) => {
   const taskId = req.params.id
 
