@@ -1,22 +1,25 @@
+
+const { Sequelize, Model, DataTypes } = require("sequelize");
 const express = require('express')
+
 const app = express()
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: 'my-database.db'
+});
+const TaskModel = require('./models/task')
+
+const tasks = TaskModel(sequelize, DataTypes)
 
 app.set('view engine', 'ejs')
 
-app.get('/fotos', (req, res) => {
-  res.render('fotos', { nome: req.query.nome })
-})
+app.get('/tarefas/:id', async (req, res) => {
+  const taskId = req.params.id
 
-app.get('/cachorros', (req, res) => {
-  res.send('<html><body><h1>Cheguei na rota dos cachorros!</h1></body></html>')
-})
+  const task = await tasks.findByPk(taskId)
 
-app.post('/', (req, res) => {
-  res.send('Respondendo requisicao POST!')
-})
-
-app.post('/cachorros', (req, res) => {
-  res.send('Adotando um novo cachorro')
+  res.render('tarefa', { id: task.id, name: task.name })
 })
 
 app.listen(8080, () => {

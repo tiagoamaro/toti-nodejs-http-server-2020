@@ -1,6 +1,6 @@
-# Servidor HTTP NodeJS
+# Servidor HTTP NodeJS (SQLite + Sequelize)
 
-Exemplo de servidor HTTP com NodeJS.
+Exemplo de servidor Express com NodeJS, que se conecta a um banco de dados SQLite3 utilizando express.
 
 ## Requisitos
 
@@ -8,4 +8,8 @@ Exemplo de servidor HTTP com NodeJS.
 
 ## Como rodar?
 
-`node index.js`
+- Clone o projeto
+- Instale as dependências (`npm install`)
+- Rode as migrações (`npx sequelize-cli db:migrate`)
+- Popule o banco de dados utilizando os seeders existentes (`npx sequelize-cli db:seed:all`)
+- Rode o servidor Express (`npm run dev`)
